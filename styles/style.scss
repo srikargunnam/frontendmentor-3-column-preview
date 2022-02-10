@@ -1,0 +1,280 @@
+// Font declaraitons
+$lexend-deca: "Lexend Deca", sans-serif; // for paragraphs and buttons
+$big-shoulders-display: "Big Shoulders Display", cursive; // for headings
+
+// Color declaraitons
+$bright-orange: hsl(31, 77%, 52%); // sedan cars article background
+$dark-cyan: hsl(184, 100%, 22%); // SUV cars article background
+$very-dark-cyan: hsl(179, 100%, 13%); // Luxury cars article background
+$transparent-white: hsla(0, 0%, 100%, 0.75); // (paragraphs)
+$very-light-gray: hsl(0, 0%, 95%); // background, headings, buttons
+$attribution: rgba(19, 33, 54, 0.952);
+$scrollbar-thumb: rgba(253, 253, 253, 0.623);
+
+@mixin custom-scroll-bar() {
+  &::-webkit-scrollbar {
+    border-radius: 1rem;
+    height: 0.5rem;
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $scrollbar-thumb;
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: none;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: $scrollbar-thumb;
+}
+
+* {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: $lexend-deca;
+  margin: 0;
+}
+
+body {
+  min-height: unquote("130rem");
+}
+
+.card {
+  width: unquote("min(90vw, 40rem)");
+  height: unquote("min(90vh, 80rem)");
+  min-height: unquote("115rem");
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, 0%);
+  border-radius: unquote("1rem");
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "sedans"
+    "suvs"
+    "luxury";
+
+  article {
+    width: 100%;
+    height: 100%;
+    padding: unquote("min(6rem, calc(4vw + 3rem))");
+    display: grid;
+    grid-template-rows: 1fr 1fr 2fr 1fr;
+    grid-template-areas:
+      "car-svg"
+      "car-type"
+      "paragraph"
+      "button";
+
+    img {
+      grid-area: car-svg;
+      width: unquote("min(10rem, calc(6vw + 3rem))");
+      height: auto;
+    }
+
+    h1 {
+      grid-area: car-type;
+      color: $very-light-gray;
+      font-size: unquote("min(5rem, calc(4vw + 2rem))");
+      font-family: $big-shoulders-display;
+      text-transform: uppercase;
+      margin: unquote("1rem 0");
+    }
+
+    p {
+      grid-area: paragraph;
+      color: $transparent-white;
+      padding: unquote("0.5rem 0");
+      font-size: unquote("min(1.8rem, calc(1.8vw + 0.8rem))");
+      font-weight: 400;
+      line-height: 1.5;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      @include custom-scroll-bar();
+    }
+
+    button {
+      width: fit-content;
+      height: fit-content;
+      grid-area: button;
+      padding: unquote(
+        "min(1.8rem, calc(1.5vw + 0.5rem)) min(4rem, calc(3.5vw + 1rem))"
+      );
+      background: $very-light-gray;
+      border-radius: unquote("5rem");
+      border: none;
+      font-size: unquote("min(2rem, calc(2.5vw + 0.5rem))");
+      position: relative;
+      top: 50%;
+    }
+  }
+
+  .sedan {
+    grid-area: sedans;
+    background: $bright-orange;
+    button {
+      color: $bright-orange;
+    }
+  }
+
+  .suv {
+    grid-area: suvs;
+    background: $dark-cyan;
+    button {
+      color: $dark-cyan;
+    }
+  }
+
+  .luxury {
+    grid-area: luxury;
+    background: $very-dark-cyan;
+    button {
+      color: $very-dark-cyan;
+    }
+  }
+}
+
+.attribution {
+  font-size: unquote("min(2rem, calc(2.5vw + 0.5rem))");
+  color: $very-light-gray;
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  bottom: unquote("1rem");
+  //   top: 95%;
+  transform: translateX(-50%);
+  background: $attribution;
+  padding: unquote("0.5rem 2rem");
+  border-radius: unquote("1rem");
+  z-index: -1;
+  a {
+    font-size: unquote("min(2rem, calc(2.5vw + 0.5rem))");
+    color: $transparent-white;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  .card {
+    width: unquote("min(90vw, 115rem)");
+    height: unquote("min(90vh, 65rem)");
+    min-height: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: unquote("1rem");
+    overflow: hidden;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+      "sedans suvs luxury"
+      "sedans suvs luxury";
+
+    article {
+      width: 100%;
+      height: 100%;
+      padding: unquote("min(6rem, calc(3vw + 1rem))");
+      display: grid;
+      grid-template-rows: minmax(0.6fr, 1fr) 1fr 3fr 1fr;
+      grid-template-areas:
+        "car-svg"
+        "car-type"
+        "paragraph"
+        "button";
+
+      img {
+        grid-area: car-svg;
+        width: unquote("min(10rem, calc(6vw + 1rem))");
+        height: auto;
+      }
+
+      h1 {
+        grid-area: car-type;
+        color: $very-light-gray;
+        font-size: unquote("min(5rem, calc(4vw + 0.5rem))");
+        font-family: $big-shoulders-display;
+        text-transform: uppercase;
+      }
+
+      p {
+        grid-area: paragraph;
+        color: $transparent-white;
+        padding: unquote("2rem 0");
+        font-size: unquote("min(1.8rem, calc(1.8vw + 0.5rem))");
+        font-weight: 400;
+        letter-spacing: 0.05rem;
+        line-height: 1.8;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        @include custom-scroll-bar();
+      }
+
+      button {
+        width: fit-content;
+        height: fit-content;
+        grid-area: button;
+        padding: unquote(
+          "min(1.8rem, calc(1.5vw + 0.5rem)) min(4rem, calc(3.5vw + 1rem))"
+        );
+        background: $very-light-gray;
+        border-radius: unquote("5rem");
+        border: none;
+        font-size: unquote("min(2rem, calc(1vw + 0.5rem))");
+        position: relative;
+        top: 40%;
+      }
+    }
+
+    .sedan {
+      grid-area: sedans;
+      background: $bright-orange;
+      button {
+        color: $bright-orange;
+      }
+    }
+
+    .suv {
+      grid-area: suvs;
+      background: $dark-cyan;
+      button {
+        color: $dark-cyan;
+      }
+    }
+
+    .luxury {
+      grid-area: luxury;
+      background: $very-dark-cyan;
+      button {
+        color: $very-dark-cyan;
+      }
+    }
+  }
+
+  .attribution {
+    font-size: unquote("min(2rem, calc(1.5vw + 0.5rem))");
+    color: $very-light-gray;
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    bottom: unquote("1rem");
+    transform: translateX(-50%);
+    background: $attribution;
+    padding: unquote("0.5rem 2rem");
+    border-radius: unquote("1rem");
+    z-index: -1;
+    a {
+      font-size: unquote("min(2rem, calc(1.5vw + 0.5rem))");
+      color: $transparent-white;
+    }
+  }
+}
