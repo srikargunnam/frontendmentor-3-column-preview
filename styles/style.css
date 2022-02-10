@@ -7,13 +7,13 @@
 }
 
 body {
-  min-height: 130rem;
+  min-height: 135rem;
 }
 
 .card {
   width: min(90vw, 40rem);
   height: min(90vh, 80rem);
-  min-height: 115rem;
+  min-height: 120rem;
   position: absolute;
   left: 50%;
   top: 5%;

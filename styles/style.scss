@@ -43,13 +43,13 @@ $scrollbar-thumb: rgba(253, 253, 253, 0.623);
 }
 
 body {
-  min-height: unquote("130rem");
+  min-height: unquote("135rem");
 }
 
 .card {
   width: unquote("min(90vw, 40rem)");
   height: unquote("min(90vh, 80rem)");
-  min-height: unquote("115rem");
+  min-height: unquote("120rem");
   position: absolute;
   left: 50%;
   top: 5%;
