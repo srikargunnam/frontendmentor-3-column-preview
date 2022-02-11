@@ -1,5 +1,5 @@
 // Font declaraitons
-$lexend-deca: "Lexend Deca", sans-serif; // for paragraphs and buttons
+$lexend-deca: "Lexend Deca", sans-serif; // for paragraphs and anchors
 $big-shoulders-display: "Big Shoulders Display", cursive; // for headings
 
 // Color declaraitons
@@ -7,7 +7,7 @@ $bright-orange: hsl(31, 77%, 52%); // sedan cars article background
 $dark-cyan: hsl(184, 100%, 22%); // SUV cars article background
 $very-dark-cyan: hsl(179, 100%, 13%); // Luxury cars article background
 $transparent-white: hsla(0, 0%, 100%, 0.75); // (paragraphs)
-$very-light-gray: hsl(0, 0%, 95%); // background, headings, buttons
+$very-light-gray: hsl(0, 0%, 95%); // background, headings, anchors
 $attribution: rgba(19, 33, 54, 0.952);
 $scrollbar-thumb: rgba(253, 253, 253, 0.623);
 
@@ -75,7 +75,7 @@ body {
       "car-svg"
       "car-type"
       "paragraph"
-      "button";
+      "anchor";
 
     img {
       grid-area: car-svg;
@@ -83,7 +83,7 @@ body {
       height: auto;
     }
 
-    h1 {
+    h2 {
       grid-area: car-type;
       color: $very-light-gray;
       font-size: unquote("min(5rem, calc(4vw + 2rem))");
@@ -104,10 +104,10 @@ body {
       @include custom-scroll-bar();
     }
 
-    button {
+    a {
       width: fit-content;
       height: fit-content;
-      grid-area: button;
+      grid-area: anchor;
       padding: unquote(
         "min(1.8rem, calc(1.5vw + 0.5rem)) min(4rem, calc(3.5vw + 1rem))"
       );
@@ -115,6 +115,8 @@ body {
       border-radius: unquote("5rem");
       border: none;
       font-size: unquote("min(2rem, calc(2.5vw + 0.5rem))");
+      cursor: pointer;
+      text-decoration: none;
       position: relative;
       top: 50%;
       transition: all 0.5s ease-in-out;
@@ -128,7 +130,7 @@ body {
   .sedan {
     grid-area: sedans;
     background: $bright-orange;
-    button {
+    a {
       color: $bright-orange;
     }
   }
@@ -136,7 +138,7 @@ body {
   .suv {
     grid-area: suvs;
     background: $dark-cyan;
-    button {
+    a {
       color: $dark-cyan;
     }
   }
@@ -144,7 +146,7 @@ body {
   .luxury {
     grid-area: luxury;
     background: $very-dark-cyan;
-    button {
+    a {
       color: $very-dark-cyan;
     }
   }
@@ -196,7 +198,7 @@ body {
         "car-svg"
         "car-type"
         "paragraph"
-        "button";
+        "anchor";
 
       img {
         grid-area: car-svg;
@@ -204,7 +206,7 @@ body {
         height: auto;
       }
 
-      h1 {
+      h2 {
         grid-area: car-type;
         color: $very-light-gray;
         font-size: unquote("min(5rem, calc(4vw + 0.5rem))");
@@ -225,10 +227,10 @@ body {
         @include custom-scroll-bar();
       }
 
-      button {
+      a {
         width: fit-content;
         height: fit-content;
-        grid-area: button;
+        grid-area: anchor;
         padding: unquote(
           "min(1.8rem, calc(1.5vw + 0.5rem)) min(4rem, calc(3.5vw + 1rem))"
         );
@@ -236,6 +238,8 @@ body {
         border-radius: unquote("5rem");
         border: none;
         font-size: unquote("min(2rem, calc(1vw + 0.5rem))");
+        cursor: pointer;
+        text-decoration: none;
         position: relative;
         top: 40%;
       }
@@ -244,7 +248,7 @@ body {
     .sedan {
       grid-area: sedans;
       background: $bright-orange;
-      button {
+      a {
         color: $bright-orange;
       }
     }
@@ -252,7 +256,7 @@ body {
     .suv {
       grid-area: suvs;
       background: $dark-cyan;
-      button {
+      a {
         color: $dark-cyan;
       }
     }
@@ -260,7 +264,7 @@ body {
     .luxury {
       grid-area: luxury;
       background: $very-dark-cyan;
-      button {
+      a {
         color: $very-dark-cyan;
       }
     }
@@ -283,4 +287,17 @@ body {
       color: $transparent-white;
     }
   }
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
 }
