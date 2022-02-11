@@ -28,7 +28,7 @@ Users should be able to:
 ### Screenshots
 
 #### Mobile Preview
-![](design/my-solution-mobile-preview.png)
+![](design/my-solution-mobile-preview1.png)    ![](design/my-solution-mobile-preview2.png)
 
 #### Desktop Preview
 ![](design/my-solution-desktop-preview.png)
